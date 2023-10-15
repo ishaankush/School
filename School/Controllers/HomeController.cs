@@ -73,7 +73,27 @@ namespace School.Controllers
             n.CreatedOn = DateTime.Now;
             _context.NoticeBoards.Add(n);
             _context.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public IActionResult DeleteNotice(int id)
+        {
+            if (HttpContext.Session.GetString("Username") != "admin")
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+
+            var noticeToDelete = _context.NoticeBoards.FirstOrDefault(n => n.Id == id);
+
+            if (noticeToDelete != null)
+            {
+                _context.NoticeBoards.Remove(noticeToDelete);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index"); // Redirect to your desired action after deletion
         }
 
 

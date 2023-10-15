@@ -51,6 +51,10 @@
                 {
                     <div>                       
                         <h7>@notice.NoticeBody </h7>
+                        <form method="post" asp-controller="Home" asp-action="DeleteNotice">
+                            <input type="hidden" name="id" value="@notice.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
                     <hr />
                 }
