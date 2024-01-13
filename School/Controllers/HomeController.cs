@@ -61,6 +61,15 @@ namespace School.Controllers
             return View();
         }
 
+        public IActionResult Library()
+        {
+            if (HttpContext.Session.GetString("Username") != "admin")
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            return View();
+        }
+
         //notice board Logic
         public IActionResult NoticeBoard()
         {
