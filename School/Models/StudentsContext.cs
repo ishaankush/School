@@ -35,6 +35,8 @@ public partial class StudentsContext : DbContext
 
     public virtual DbSet<GaurdianType> GaurdianTypes { get; set; }
 
+    public virtual DbSet<Library> Libraries { get; set; }
+
     public virtual DbSet<NoticeBoard> NoticeBoards { get; set; }
 
     public virtual DbSet<Phone> Phones { get; set; }
@@ -59,7 +61,7 @@ public partial class StudentsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=Students;Integrated Security=True;Encrypt=False;");
+        => optionsBuilder.UseSqlServer("Server=ABHISHEK;Database=Students;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -399,6 +401,29 @@ public partial class StudentsContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("NAME");
+        });
+
+        modelBuilder.Entity<Library>(entity =>
+        {
+            entity
+                .ToTable("Library");
+
+            entity.Property(e => e.AuthorName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Author_Name");
+            entity.Property(e => e.BookId).ValueGeneratedOnAdd();
+            entity.Property(e => e.BookName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedBy)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("CREATED_BY");
+            entity.Property(e => e.CreatedOn)
+                .HasColumnType("datetime")
+                .HasColumnName("CREATED_ON");
+            entity.Property(e => e.StudentId).HasColumnName("Student_Id");
         });
 
         modelBuilder.Entity<NoticeBoard>(entity =>
