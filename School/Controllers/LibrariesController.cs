@@ -21,6 +21,10 @@ namespace School.Controllers
         // GET: Libraries
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             return _context.Libraries != null ?
                         View(await _context.Libraries.ToListAsync()) :
                         Problem("Entity set 'StudentsContext.Libraries'  is null.");
@@ -51,6 +55,7 @@ namespace School.Controllers
             {
                 return RedirectToAction("Login", "Accounts");
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
             return View();
         }
 
@@ -72,6 +77,7 @@ namespace School.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Name");
             return View(library);
         }
 
@@ -88,6 +94,7 @@ namespace School.Controllers
             {
                 return NotFound();
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
             return View(library);
         }
 
@@ -123,6 +130,7 @@ namespace School.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Name");
             return View(library);
         }
 

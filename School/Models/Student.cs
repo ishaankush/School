@@ -48,4 +48,6 @@ public partial class Student
     public virtual State? State { get; set; }
 
     public virtual ICollection<StudentGuardian> StudentGuardians { get; set; } = new List<StudentGuardian>();
+
+    public virtual ICollection<Library> Students { get; set; } = new List<Library>();
 }
