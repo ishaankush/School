@@ -17,7 +17,7 @@ public partial class State
 
     public string? ModifiedBy { get; set; }
 
-    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+    public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 
     public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

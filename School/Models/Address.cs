@@ -33,7 +33,5 @@ public partial class Address
 
     public virtual AddressType AddressType { get; set; } = null!;
 
-    public virtual Employee? Employee { get; set; }
-
     public virtual Student? Student { get; set; }
 }

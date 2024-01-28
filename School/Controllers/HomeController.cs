@@ -23,7 +23,7 @@ namespace School.Controllers
             }
 
             int studentCount = _context.Students.Count();
-            int employeeCount = _context.Employees.Count();
+            int employeeCount = _context.Staff.Count();
             int courceCount  = _context.Courses.Count();
             ViewData["StudentCount"] = studentCount;
             ViewData["EmployeeCount"] = employeeCount;

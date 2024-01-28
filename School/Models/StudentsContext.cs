@@ -27,10 +27,6 @@ public partial class StudentsContext : DbContext
 
     public virtual DbSet<Email> Emails { get; set; }
 
-    public virtual DbSet<Employee> Employees { get; set; }
-
-    public virtual DbSet<EmployeeType> EmployeeTypes { get; set; }
-
     public virtual DbSet<GaurdianPhone> GaurdianPhones { get; set; }
 
     public virtual DbSet<GaurdianType> GaurdianTypes { get; set; }
@@ -44,6 +40,8 @@ public partial class StudentsContext : DbContext
     public virtual DbSet<PhoneType> PhoneTypes { get; set; }
 
     public virtual DbSet<Rolemaster> Rolemasters { get; set; }
+
+    public virtual DbSet<Staff> Staff { get; set; }
 
     public virtual DbSet<State> States { get; set; }
 
@@ -114,10 +112,6 @@ public partial class StudentsContext : DbContext
                 .HasForeignKey(d => d.AddressTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Address_AddressType");
-
-            entity.HasOne(d => d.Employee).WithMany(p => p.Addresses)
-                .HasForeignKey(d => d.EmployeeId)
-                .HasConstraintName("FK_Address_Employee");
 
             entity.HasOne(d => d.Student).WithMany(p => p.Addresses)
                 .HasForeignKey(d => d.StudentId)
@@ -261,85 +255,6 @@ public partial class StudentsContext : DbContext
                 .HasConstraintName("FK_Email_Student");
         });
 
-        modelBuilder.Entity<Employee>(entity =>
-        {
-            entity.ToTable("Employee");
-
-            entity.Property(e => e.EmployeeId).HasColumnName("EMPLOYEE_ID");
-            entity.Property(e => e.CityId).HasColumnName("CITY_ID");
-            entity.Property(e => e.CountryId).HasColumnName("COUNTRY_ID");
-            entity.Property(e => e.CreatedBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("CREATED_BY");
-            entity.Property(e => e.CreatedOn)
-                .HasColumnType("datetime")
-                .HasColumnName("CREATED_ON");
-            entity.Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("EMAIL");
-            entity.Property(e => e.EmployeeTypeId).HasColumnName("EMPLOYEE_TYPE_ID");
-            entity.Property(e => e.ModifiedBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("MODIFIED_BY");
-            entity.Property(e => e.ModifiedOn)
-                .HasColumnType("datetime")
-                .HasColumnName("MODIFIED_ON");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NAME");
-            entity.Property(e => e.Phone)
-                .HasMaxLength(10)
-                .IsFixedLength()
-                .HasColumnName("PHONE");
-            entity.Property(e => e.StateId).HasColumnName("STATE_ID");
-
-            entity.HasOne(d => d.City).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.CityId)
-                .HasConstraintName("FK_Employee_City");
-
-            entity.HasOne(d => d.Country).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("FK_Employee_Country");
-
-            entity.HasOne(d => d.EmployeeType).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.EmployeeTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Employee_EmployeeType");
-
-            entity.HasOne(d => d.State).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.StateId)
-                .HasConstraintName("FK_Employee_State");
-        });
-
-        modelBuilder.Entity<EmployeeType>(entity =>
-        {
-            entity.ToTable("EmployeeType");
-
-            entity.Property(e => e.EmployeeTypeId).HasColumnName("EMPLOYEE_TYPE_ID");
-            entity.Property(e => e.CreatedBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("CREATED_BY");
-            entity.Property(e => e.CreatedOn)
-                .HasColumnType("datetime")
-                .HasColumnName("CREATED_ON");
-            entity.Property(e => e.ModifiedBy)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("MODIFIED_BY");
-            entity.Property(e => e.ModifiedOn)
-                .HasColumnType("datetime")
-                .HasColumnName("MODIFIED_ON");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("NAME");
-        });
-
         modelBuilder.Entity<GaurdianPhone>(entity =>
         {
             entity.HasKey(e => e.GuardianPhoneId).HasName("PK_Student.Gaurdian.phone");
@@ -405,14 +320,14 @@ public partial class StudentsContext : DbContext
 
         modelBuilder.Entity<Library>(entity =>
         {
-            entity
-                .ToTable("Library");
+            entity.HasKey(e => e.BookId);
+
+            entity.ToTable("Library");
 
             entity.Property(e => e.AuthorName)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("Author_Name");
-            entity.Property(e => e.BookId).ValueGeneratedOnAdd();
             entity.Property(e => e.BookName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -520,6 +435,49 @@ public partial class StudentsContext : DbContext
             entity.Property(e => e.RoleDescription)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Staff>(entity =>
+        {
+            entity.Property(e => e.StaffId).HasColumnName("STAFF_ID");
+            entity.Property(e => e.CityId).HasColumnName("CITY_ID");
+            entity.Property(e => e.CountryId).HasColumnName("COUNTRY_ID");
+            entity.Property(e => e.CreatedBy)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("CREATED_BY");
+            entity.Property(e => e.CreatedOn)
+                .HasColumnType("datetime")
+                .HasColumnName("CREATED_ON");
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("EMAIL");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("NAME");
+            entity.Property(e => e.Phone)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("PHONE");
+            entity.Property(e => e.StaffType)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("STAFF_TYPE");
+            entity.Property(e => e.StateId).HasColumnName("STATE_ID");
+
+            entity.HasOne(d => d.City).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.CityId)
+                .HasConstraintName("FK_Staff_City");
+
+            entity.HasOne(d => d.Country).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.CountryId)
+                .HasConstraintName("FK_Staff_Country");
+
+            entity.HasOne(d => d.State).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.StateId)
+                .HasConstraintName("FK_Staff_State");
         });
 
         modelBuilder.Entity<State>(entity =>
