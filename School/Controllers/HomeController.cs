@@ -25,9 +25,11 @@ namespace School.Controllers
             int studentCount = _context.Students.Count();
             int employeeCount = _context.Staff.Count();
             int courceCount  = _context.Courses.Count();
+            int bookCount    = _context.Libraries.Count();
             ViewData["StudentCount"] = studentCount;
             ViewData["EmployeeCount"] = employeeCount;
             ViewData["CourceCount"] = courceCount;
+            ViewData["BookCount"] = bookCount;
 
             //fee payment percentage          
             int studentsPaid = _context.Students.Count(s => s.FeePayment == true);        
