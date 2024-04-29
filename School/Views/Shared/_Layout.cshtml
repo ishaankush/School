@@ -30,6 +30,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Fees" asp-action="Index">Fees</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="SearchStudent">Search Students</a>
                         </li>
 
@@ -42,7 +45,7 @@
                         <li class="nav-item bg-info" style="margin-right:4px">
                             <a class="nav-link text-light" asp-area="" asp-controller="Accounts" asp-action="RegisterUser">Register New User</a>
                         </li>
-                       
+                        
                         
                         @if (Context.Session.GetString("Username") == null)
                         {

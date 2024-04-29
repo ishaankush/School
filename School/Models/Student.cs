@@ -43,6 +43,8 @@ public partial class Student
 
     public virtual ICollection<Email> Emails { get; set; } = new List<Email>();
 
+    public virtual ICollection<Fee> Fees { get; set; } = new List<Fee>();
+
     public virtual ICollection<Phone> Phones { get; set; } = new List<Phone>();
 
     public virtual State? State { get; set; }

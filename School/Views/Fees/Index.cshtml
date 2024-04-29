@@ -1,0 +1,284 @@
+﻿@model IEnumerable<School.Models.Fee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.January)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.February)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.March)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.April)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.May)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.June)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.July)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.August)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.September)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.October)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Novemeber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.December)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @if (item.January != null)
+                    {
+                        if (item.January == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.February != null)
+                    {
+                        if (item.February == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.March != null)
+                    {
+                        if (item.March == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.April != null)
+                    {
+                        if (item.April == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.May != null)
+                    {
+                        if (item.May == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.June != null)
+                    {
+                        if (item.June == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.July != null)
+                    {
+                        if (item.July == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.August != null)
+                    {
+                        if (item.August == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.September != null)
+                    {
+                        if (item.September == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.October != null)
+                    {
+                        if (item.October == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.Novemeber != null)
+                    {
+                        if (item.Novemeber == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+                <td>
+                    @if (item.December != null)
+                    {
+                        if (item.December == true)
+                        {
+                            <span style="color: green; font-weight: bold;">@Html.Raw("Paid")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red; font-weight: bold;">@Html.Raw("Not Paid")</span>
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
+                    }
+                </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>      
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Name)
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.FeesId">Edit</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.FeesId">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.FeesId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

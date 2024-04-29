@@ -1,0 +1,153 @@
+﻿@model School.Models.Fee
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Fee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FeesId" />
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="January" class="control-label"></label>
+                <select asp-for="January" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="January" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="February" class="control-label"></label>
+                <select asp-for="February" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="February" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="March" class="control-label"></label>
+                <select asp-for="March" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="March" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="April" class="control-label"></label>
+                <select asp-for="April" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="April" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="May" class="control-label"></label>
+                <select asp-for="May" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="May" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="June" class="control-label"></label>
+                <select asp-for="June" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="June" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="July" class="control-label"></label>
+                <select asp-for="July" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="July" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="August" class="control-label"></label>
+                <select asp-for="August" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="August" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="September" class="control-label"></label>
+                <select asp-for="September" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="September" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="October" class="control-label"></label>
+                <select asp-for="October" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="October" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Novemeber" class="control-label"></label>
+                <select asp-for="Novemeber" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="Novemeber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="December" class="control-label"></label>
+                <select asp-for="December" class="form-control">
+                    <option value="">Select</option>
+                    <option value="true">Paid</option>
+                    <option value="false">Not Paid</option>
+                </select>
+                <span asp-validation-for="December" class="text-danger"></span>
+            </div>
+            <div class="form-group visually-hidden">
+                <label asp-for="ModifiedOn" class="control-label"></label>
+                <input asp-for="ModifiedOn" class="form-control" />
+                <span asp-validation-for="ModifiedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group visually-hidden">
+                <label asp-for="ModifiedBy" class="control-label"></label>
+                <input asp-for="ModifiedBy" class="form-control" />
+                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

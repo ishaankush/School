@@ -27,6 +27,8 @@ public partial class StudentsContext : DbContext
 
     public virtual DbSet<Email> Emails { get; set; }
 
+    public virtual DbSet<Fee> Fees { get; set; }
+
     public virtual DbSet<GaurdianPhone> GaurdianPhones { get; set; }
 
     public virtual DbSet<GaurdianType> GaurdianTypes { get; set; }
@@ -253,6 +255,26 @@ public partial class StudentsContext : DbContext
             entity.HasOne(d => d.Student).WithMany(p => p.Emails)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK_Email_Student");
+        });
+
+        modelBuilder.Entity<Fee>(entity =>
+        {
+            entity.HasKey(e => e.FeesId);
+
+            entity.ToTable("Fee");
+
+            entity.Property(e => e.FeesId).HasColumnName("Fees_Id");
+            entity.Property(e => e.ModifiedBy)
+                .HasColumnType("datetime")
+                .HasColumnName("MODIFIED_BY");
+            entity.Property(e => e.ModifiedOn)
+                .HasColumnType("datetime")
+                .HasColumnName("MODIFIED_ON");
+            entity.Property(e => e.StudentId).HasColumnName("Student_Id");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.Fees)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_Fee_Student");
         });
 
         modelBuilder.Entity<GaurdianPhone>(entity =>
