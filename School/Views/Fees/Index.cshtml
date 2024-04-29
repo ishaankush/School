@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Add New Fee Detail</a>
 </p>
 <table class="table">
     <thead>
@@ -265,8 +265,7 @@
                         @Html.Raw("<span style=\"color: gray; font-weight: bold;\">Not Available</span>")
                     }
                 </td>
-
-
+                
             <td>
                 @Html.DisplayFor(modelItem => item.ModifiedOn)
             </td>      

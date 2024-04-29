@@ -21,6 +21,11 @@ namespace School.Controllers
         // GET: Fees
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+
             var studentsContext = _context.Fees.Include(f => f.Student);
             return View(await studentsContext.ToListAsync());
         }
@@ -47,7 +52,7 @@ namespace School.Controllers
         // GET: Fees/Create
         public IActionResult Create()
         {
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Name");
             return View();
         }
 
@@ -58,6 +63,11 @@ namespace School.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FeesId,StudentId,January,February,March,April,May,June,July,August,September,October,Novemeber,December,ModifiedOn,ModifiedBy")] Fee fee)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+
             if (ModelState.IsValid)
             {
                 fee.ModifiedOn = DateTime.Now;
@@ -82,7 +92,7 @@ namespace School.Controllers
             {
                 return NotFound();
             }
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId", fee.StudentId);
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Name", fee.StudentId);
             return View(fee);
         }
 
@@ -93,6 +103,10 @@ namespace School.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FeesId,StudentId,January,February,March,April,May,June,July,August,September,October,Novemeber,December,ModifiedOn,ModifiedBy")] Fee fee)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             if (id != fee.FeesId)
             {
                 return NotFound();
@@ -126,6 +140,11 @@ namespace School.Controllers
         // GET: Fees/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+
             if (id == null || _context.Fees == null)
             {
                 return NotFound();
@@ -147,6 +166,10 @@ namespace School.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
             if (_context.Fees == null)
             {
                 return Problem("Entity set 'StudentsContext.Fees'  is null.");

@@ -48,7 +48,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.State)
             </th>
-            <th>
+            <th class="visually-hidden">
                 @Html.DisplayNameFor(model => model.FeePayment)
             </th>
             <th></th>
@@ -93,7 +93,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.State.Name)
             </td>
-                <td>
+                <td class="visually-hidden">
                     @Html.DisplayFor(modelItem => item.FeePayment)
                 </td>
             <td>
